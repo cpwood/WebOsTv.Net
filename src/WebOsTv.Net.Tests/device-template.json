@@ -1,0 +1,5 @@
+{
+  // Copy this file and name it as device.json
+  // The file will be excluded by .gitignore.
+  "IpAddress": "192.168.1.82"
+}
