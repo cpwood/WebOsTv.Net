@@ -5,7 +5,7 @@ namespace WebOsTv.Net.Responses.Tv
     public class GetChannelProgramInfoResponse : ResponseBase
     {
         public ChannelInfo Channel { get; set; }
-        public Programlist[] ProgramList { get; set; }
+        public ProgramItem[] ProgramList { get; set; }
 
         public class ChannelInfo
         {
@@ -44,7 +44,7 @@ namespace WebOsTv.Net.Responses.Tv
             public bool Numeric { get; set; }
             public bool PrimaryCh { get; set; }
             public bool SpecialService { get; set; }
-            public Casystemidlist CASystemIDList { get; set; }
+            public CaSystemId CASystemIDList { get; set; }
             public int CASystemIDListCount { get; set; }
             public int[] GroupIdList { get; set; }
             public string ChannelGenreCode { get; set; }
@@ -82,11 +82,11 @@ namespace WebOsTv.Net.Responses.Tv
             public int SVCID { get; set; }
         }
 
-        public class Casystemidlist
+        public class CaSystemId
         {
         }
 
-        public class Programlist
+        public class ProgramItem
         {
             public string ChannelId { get; set; }
             public int Duration { get; set; }
