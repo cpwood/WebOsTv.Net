@@ -13,6 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Update Version
+      uses: jacobtomlinson/gha-find-replace@master
+      with:
+        find: "[0-9]+\\</Version\\>"
+        replace: ${{ github.run_number }}</Version>
     - name: Update Assembly Version
       uses: jacobtomlinson/gha-find-replace@master
       with:
