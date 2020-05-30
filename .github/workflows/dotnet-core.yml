@@ -17,12 +17,12 @@ jobs:
       uses: jacobtomlinson/gha-find-replace@master
       with:
         find: "[0-9]+\\</AssemblyVersion\\>"
-        replace: ${{ env.GITHUB_RUN_NUMBER }}</AssemblyVersion>
+        replace: ${{ github.run_number }}</AssemblyVersion>
     - name: Update File Version
       uses: jacobtomlinson/gha-find-replace@master
       with:
         find: "[0-9]+\\</FileVersion\\>"
-        replace: ${{ env.GITHUB_RUN_NUMBER }}</FileVersion>
+        replace: ${{ github.run_number }}</FileVersion>
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
