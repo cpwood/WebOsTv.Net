@@ -38,7 +38,7 @@ jobs:
       working-directory: ./src
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
-      if: failure()
+      if: always()
       with:
         name: source
         path: src
