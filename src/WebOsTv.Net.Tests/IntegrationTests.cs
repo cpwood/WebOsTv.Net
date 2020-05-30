@@ -1,5 +1,6 @@
 using Newtonsoft.Json.Linq;
 using System.IO;
+using Newtonsoft.Json;
 using WebOsTv.Net.Auth;
 using WebOsTv.Net.Commands.Api;
 using WebOsTv.Net.Commands.Apps;
@@ -22,10 +23,12 @@ namespace WebOsTv.Net.Tests
 {
     public class IntegrationTests
     {
+        private readonly ITestOutputHelper _output;
         private readonly Client _client;
 
         public IntegrationTests(ITestOutputHelper output)
         {
+            _output = output;
             var logger = output.BuildLoggerFor<Client>();
 
             var obj = JObject.Parse(File.ReadAllText("..\\..\\..\\device.json"));
@@ -39,43 +42,50 @@ namespace WebOsTv.Net.Tests
         [DebugOnly]
         public async void TestPowerOff()
         {
-            var unused = await _client.SendCommandAsync<PowerOffResponse>(new PowerOffCommand());
+            var response = await _client.SendCommandAsync<PowerOffResponse>(new PowerOffCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestVolumeGet()
         {
-            var unused = await _client.SendCommandAsync<VolumeGetResponse>(new VolumeGetCommand());
+            var response = await _client.SendCommandAsync<VolumeGetResponse>(new VolumeGetCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestVolumeSet()
         {
-            var unused = await _client.SendCommandAsync<VolumeSetResponse>(new VolumeSetCommand { Volume = 0 });
+            var response = await _client.SendCommandAsync<VolumeSetResponse>(new VolumeSetCommand { Volume = 0 });
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestVolumeUp()
         {
-            var unused = await _client.SendCommandAsync<VolumeUpResponse>(new VolumeUpCommand());
+            var response = await _client.SendCommandAsync<VolumeUpResponse>(new VolumeUpCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestVolumeDown()
         {
-            var unused = await _client.SendCommandAsync<VolumeDownResponse>(new VolumeDownCommand());
+            var response = await _client.SendCommandAsync<VolumeDownResponse>(new VolumeDownCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestMute()
         {
-            var unused = await _client.SendCommandAsync<VolumeMuteResponse>(new VolumeMuteCommand { Mute = true });
+            var response = await _client.SendCommandAsync<VolumeMuteResponse>(new VolumeMuteCommand { Mute = true });
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestUnmute()
         {
-            var unused = await _client.SendCommandAsync<VolumeMuteResponse>(new VolumeMuteCommand { Mute = false });
+            var response = await _client.SendCommandAsync<VolumeMuteResponse>(new VolumeMuteCommand { Mute = false });
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
         #endregion
 
@@ -83,31 +93,36 @@ namespace WebOsTv.Net.Tests
         [DebugOnly]
         public async void TestFastForward()
         {
-            var unused = await _client.SendCommandAsync<ControlFastForwardResponse>(new ControlFastForwardCommand());
+            var response = await _client.SendCommandAsync<ControlFastForwardResponse>(new ControlFastForwardCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestPause()
         {
-            var unused = await _client.SendCommandAsync<ControlPauseResponse>(new ControlPauseCommand());
+            var response = await _client.SendCommandAsync<ControlPauseResponse>(new ControlPauseCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestPlay()
         {
-            var unused = await _client.SendCommandAsync<ControlPlayResponse>(new ControlPlayCommand());
+            var response = await _client.SendCommandAsync<ControlPlayResponse>(new ControlPlayCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestRewind()
         {
-            var unused = await _client.SendCommandAsync<ControlRewindResponse>(new ControlRewindCommand());
+            var response = await _client.SendCommandAsync<ControlRewindResponse>(new ControlRewindCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestStop()
         {
-            var unused = await _client.SendCommandAsync<ControlStopResponse>(new ControlStopCommand());
+            var response = await _client.SendCommandAsync<ControlStopResponse>(new ControlStopCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
         #endregion
 
@@ -115,49 +130,57 @@ namespace WebOsTv.Net.Tests
         [DebugOnly]
         public async void TestGetForeground()
         {
-            var unused = await _client.SendCommandAsync<GetForegroundResponse>(new GetForegroundCommand());
+            var response = await _client.SendCommandAsync<GetForegroundResponse>(new GetForegroundCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestGetLaunchPoints()
         {
-            var unused = await _client.SendCommandAsync<ListLaunchPointsResponse>(new ListLaunchPointsCommand());
+            var response = await _client.SendCommandAsync<ListLaunchPointsResponse>(new ListLaunchPointsCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestClose()
         {
-            var unused = await _client.SendCommandAsync<CloseCommandResponse>(new CloseCommand { Id = "now.tv"});
+            var response = await _client.SendCommandAsync<CloseCommandResponse>(new CloseCommand { Id = "netflix"});
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestGetAppState()
         {
-            var unused = await _client.SendCommandAsync<GetAppStateResponse>(new GetAppStateCommand { Id = "now.tv"});
+            var response = await _client.SendCommandAsync<GetAppStateResponse>(new GetAppStateCommand { Id = "netflix"});
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestLaunchApp()
         {
-            var unused = await _client.SendCommandAsync<LaunchAppResponse>(new LaunchAppCommand { Id = "now.tv"});
+            var response = await _client.SendCommandAsync<LaunchAppResponse>(new LaunchAppCommand { Id = "netflix"});
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestOpenApp()
         {
-            var unused = await _client.SendCommandAsync<OpenAppResponse>(new OpenAppCommand { Id = "now.tv"});
+            var response = await _client.SendCommandAsync<OpenAppResponse>(new OpenAppCommand { Id = "netflix"});
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestLaunchBrowser()
         {
-            var unused = await _client.SendCommandAsync<LaunchBrowserResponse>(new LaunchBrowserCommand {BrowserUrl = "https://www.google.com"});
+            var response = await _client.SendCommandAsync<LaunchBrowserResponse>(new LaunchBrowserCommand {BrowserUrl = "https://www.google.com"});
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestLaunchYouTube()
         {
-            var unused = await _client.SendCommandAsync<LaunchYouTubeVideoResponse>(new LaunchYouTubeVideoCommand {VideoId = "AmWCh8Vctr4"});
+            var response = await _client.SendCommandAsync<LaunchYouTubeVideoResponse>(new LaunchYouTubeVideoCommand {VideoId = "AmWCh8Vctr4"});
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
         #endregion
 
@@ -165,7 +188,8 @@ namespace WebOsTv.Net.Tests
         [DebugOnly]
         public async void TestToast()
         {
-            var unused = await _client.SendCommandAsync<ToastResponse>(new ToastCommand { Message = "Hello world!"});
+            var response = await _client.SendCommandAsync<ToastResponse>(new ToastCommand { Message = "Hello world!"});
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
         #endregion
 
@@ -173,49 +197,57 @@ namespace WebOsTv.Net.Tests
         [DebugOnly]
         public async void TestChannelDown()
         {
-            var unused = await _client.SendCommandAsync<ChannelDownResponse>(new ChannelDownCommand());
+            var response = await _client.SendCommandAsync<ChannelDownResponse>(new ChannelDownCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestChannelList()
         {
-            var unused = await _client.SendCommandAsync<ChannelListResponse>(new ChannelListCommand());
+            var response = await _client.SendCommandAsync<ChannelListResponse>(new ChannelListCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestChannelUp()
         {
-            var unused = await _client.SendCommandAsync<ChannelUpResponse>(new ChannelUpCommand());
+            var response = await _client.SendCommandAsync<ChannelUpResponse>(new ChannelUpCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestCurrentChannel()
         {
-            var unused = await _client.SendCommandAsync<GetCurrentChannelResponse>(new GetCurrentChannelCommand());
+            var response = await _client.SendCommandAsync<GetCurrentChannelResponse>(new GetCurrentChannelCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestProgrammeInfo()
         {
-            var unused = await _client.SendCommandAsync<GetChannelProgramInfoResponse>(new GetChannelProgramInfoCommand());
+            var response = await _client.SendCommandAsync<GetChannelProgramInfoResponse>(new GetChannelProgramInfoCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void Test3d()
         {
-            var unused = await _client.SendCommandAsync<ThreeDimensionStatusResponse>(new ThreeDimensionStatusCommand());
+            var response = await _client.SendCommandAsync<ThreeDimensionStatusResponse>(new ThreeDimensionStatusCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestExternalInputList()
         {
-            var unused = await _client.SendCommandAsync<ExternalInputListResponse>(new ExternalInputListCommand());
+            var response = await _client.SendCommandAsync<ExternalInputListResponse>(new ExternalInputListCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestSwitchInput()
         {
-            var unused = await _client.SendCommandAsync<SwitchInputResponse>(new SwitchInputCommand {InputId = "HDMI_1"});
+            var response = await _client.SendCommandAsync<SwitchInputResponse>(new SwitchInputCommand {InputId = "HDMI_1"});
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
         #endregion
 
@@ -223,13 +255,15 @@ namespace WebOsTv.Net.Tests
         [DebugOnly]
         public async void TestGetMouse()
         {
-            var unused = await _client.SendCommandAsync<MouseGetResponse>(new MouseGetCommand());
+            var response = await _client.SendCommandAsync<MouseGetResponse>(new MouseGetCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
 
         [DebugOnly]
         public async void TestGetServiceList()
         {
-            var unused = await _client.SendCommandAsync<ServiceListResponse>(new ServiceListGetCommand());
+            var response = await _client.SendCommandAsync<ServiceListResponse>(new ServiceListGetCommand());
+            _output.WriteLine(JsonConvert.SerializeObject(response));
         }
         #endregion
 

@@ -69,7 +69,7 @@ namespace WebOsTv.Net
 
             var handshakeCommand = new HandshakeCommand(key);
             var handshakeResponse = await SendCommandAsync<HandshakeResponse>(handshakeCommand);
-            await _keyStore.StoreKeyAsync(hostName, handshakeResponse.ClientKey);
+            await _keyStore.StoreKeyAsync(hostName, handshakeResponse.Key);
 
             var mouseCommand = new MouseGetCommand();
             var mouseGetResponse = await SendCommandAsync<MouseGetResponse>(mouseCommand);
@@ -109,12 +109,13 @@ namespace WebOsTv.Net
 
             _socket.Send(json);
 
-            var timeoutTask = Task.Delay(CommandTimeout);
+            var timeoutTask = Task.Delay(request.Type == "register" ? 60000 : CommandTimeout);
             var responseTask = taskSource.Task;
 
             if (await Task.WhenAny(timeoutTask, responseTask) == responseTask)
             {
                 var response = responseTask.Result;
+
                 return response.Payload.ToObject<TResponse>(
                     JsonSerializer.CreateDefault(SerializationSettings.Default));
             }
@@ -128,6 +129,10 @@ namespace WebOsTv.Net
             _logger.LogTrace($"Received: {e.Data}");
 
             var response = JsonConvert.DeserializeObject<Message>(e.Data, SerializationSettings.Default);
+
+            // We may get multiple responses for register_0 - we can safely ignore this one!
+            if (response.Id == "register_0" && response.Payload.Value<string>("pairingType") == "PROMPT")
+                return;
 
             if (_completionSources.TryRemove(response.Id, out var taskCompletion))
             {

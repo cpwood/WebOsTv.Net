@@ -41,7 +41,7 @@ namespace WebOsTv.Net.Tests
                 new HandshakeResponse
                 {
                     ReturnValue = true,
-                    ClientKey = "abc123"
+                    Key = "abc123"
                 });
 
             clientMock.Setup(x => x.SendCommandAsync<MouseGetResponse>(It.IsAny<MouseGetCommand>())).ReturnsAsync(
@@ -88,7 +88,7 @@ namespace WebOsTv.Net.Tests
                 new HandshakeResponse
                 {
                     ReturnValue = true,
-                    ClientKey = "abc123"
+                    Key = "abc123"
                 });
 
             clientMock.Setup(x => x.SendCommandAsync<MouseGetResponse>(It.IsAny<MouseGetCommand>())).ReturnsAsync(
@@ -125,7 +125,7 @@ namespace WebOsTv.Net.Tests
                 new HandshakeResponse
                 {
                     ReturnValue = true,
-                    ClientKey = "abc123"
+                    Key = "abc123"
                 });
 
             clientMock.Setup(x => x.SendCommandAsync<MouseGetResponse>(It.IsAny<MouseGetCommand>())).ReturnsAsync(

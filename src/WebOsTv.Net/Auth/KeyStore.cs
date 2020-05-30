@@ -32,7 +32,7 @@ namespace WebOsTv.Net.Auth
 
         public Task<string> GetKeyAsync(string hostName)
         {
-            return Task.FromResult(_keys[hostName]);
+            return Task.FromResult(_keys.ContainsKey(hostName) ? _keys[hostName] : null);
         }
     }
 }
