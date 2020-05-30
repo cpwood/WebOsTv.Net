@@ -15,6 +15,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: State branch
+      run: echo ${{github.ref}}
     - name: Update Version
       uses: jacobtomlinson/gha-find-replace@master
       with:
@@ -44,7 +46,7 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
       working-directory: ./src
     - name: Publish nuget package
-      if: startsWith('refs/heads/releases/', ${{ github.head_ref }})
+      if: startsWith('refs/heads/releases/', ${{ github.ref }})
       run: dotnet nuget push *.nupkg -k $nuget_api_key -s "https://api.nuget.org/v3/index.json" --skip-duplicate
       env:
         nuget_api_key: ${{ secrets.NUGET_API_KEY }}
