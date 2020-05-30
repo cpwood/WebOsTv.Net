@@ -6,9 +6,9 @@
     <Authors>Chris Wood</Authors>
     <Company />
     <Description>A .NET Standard library for interacting with LG WebOS televisions.</Description>
-    <RepositoryUrl />
+    <RepositoryUrl>https://github.com/cpwood/WebOsTv.Net</RepositoryUrl>
     <PackageProjectUrl>https://github.com/cpwood/WebOsTv.Net</PackageProjectUrl>
-    <PackageLicenseExpression>Apache License 2.0</PackageLicenseExpression>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
