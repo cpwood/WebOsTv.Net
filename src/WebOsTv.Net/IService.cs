@@ -5,12 +5,12 @@ namespace WebOsTv.Net
 {
     public interface IService
     {
-        ApiService Api { get; }
-        AppsService Apps { get; }
-        AudioService Audio { get; }
-        ControlService Control { get; }
-        NotificationService Notifications { get; }
-        TvService Tv { get; }
+        IApiService Api { get; }
+        IAppsService Apps { get; }
+        IAudioService Audio { get; }
+        IControlService Control { get; }
+        INotificationService Notifications { get; }
+        ITvService Tv { get; }
         Task ConnectAsync(string hostName);
         void Close();
     }

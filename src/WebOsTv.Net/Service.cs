@@ -24,12 +24,12 @@ namespace WebOsTv.Net
             Tv = new TvService(client);
         }
 
-        public ApiService Api { get; }
-        public AppsService Apps { get; }
-        public AudioService Audio { get; }
-        public ControlService Control { get; }
-        public NotificationService Notifications { get; }
-        public TvService Tv { get; }
+        public virtual IApiService Api { get; }
+        public virtual IAppsService Apps { get; }
+        public virtual IAudioService Audio { get; }
+        public virtual IControlService Control { get; }
+        public virtual INotificationService Notifications { get; }
+        public virtual ITvService Tv { get; }
 
         public async Task ConnectAsync(string hostName)
         {

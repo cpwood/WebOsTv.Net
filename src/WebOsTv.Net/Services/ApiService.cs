@@ -4,7 +4,7 @@ using WebOsTv.Net.Responses.Api;
 
 namespace WebOsTv.Net.Services
 {
-    public class ApiService
+    public class ApiService : IApiService
     {
         private readonly IClient _client;
 

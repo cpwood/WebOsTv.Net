@@ -4,7 +4,7 @@ using WebOsTv.Net.Responses.Tv;
 
 namespace WebOsTv.Net.Services
 {
-    public class TvService
+    public class TvService : ITvService
     {
         private readonly IClient _client;
 

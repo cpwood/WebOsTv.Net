@@ -21,7 +21,7 @@ await service.ConnectAsync("192.168.1.82");
 
 // Examples 
 await service.Audio.MuteAsync();
-await service.Control.PlayAsync();
+await service.Control.SendIntentAsync(ControlIntent.Home);
 await service.Apps.LaunchAsync("abc");
 
 service.Close();

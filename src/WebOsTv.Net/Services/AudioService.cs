@@ -4,7 +4,7 @@ using WebOsTv.Net.Responses.Audio;
 
 namespace WebOsTv.Net.Services
 {
-    public class AudioService
+    public class AudioService : IAudioService
     {
         private readonly IClient _client;
 

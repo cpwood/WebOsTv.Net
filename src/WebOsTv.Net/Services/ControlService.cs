@@ -8,7 +8,7 @@ using WebOsTv.Net.Responses.System;
 
 namespace WebOsTv.Net.Services
 {
-    public class ControlService
+    public class ControlService : IControlService
     {
         private readonly IClient _client;
 

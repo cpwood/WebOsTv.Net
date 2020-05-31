@@ -4,7 +4,7 @@ using WebOsTv.Net.Responses.Notifications;
 
 namespace WebOsTv.Net.Services
 {
-    public class NotificationService
+    public class NotificationService : INotificationService
     {
         private readonly IClient _client;
 

@@ -4,7 +4,7 @@ using WebOsTv.Net.Responses.Apps;
 
 namespace WebOsTv.Net.Services
 {
-    public class AppsService
+    public class AppsService : IAppsService
     {
         private readonly IClient _client;
 
